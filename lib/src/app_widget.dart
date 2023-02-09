@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:listinha/src/home/home_page.dart';
 
 part 'package:listinha/src/shared/themes/color_schemes.g.dart';
 part 'package:listinha/src/shared/themes/themes.dart';
@@ -13,7 +14,7 @@ class AppWidget extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: const SizedBox(),
+      home: const HomePage(),
     );
   }
 }
