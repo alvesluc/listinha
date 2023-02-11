@@ -32,7 +32,7 @@ SegmentedButtonThemeData get _segmentedButtonTheme => SegmentedButtonThemeData(
       style: ButtonStyle(
         textStyle: MaterialStateProperty.resolveWith<TextStyle?>((states) {
           if (states.contains(MaterialState.selected)) {
-            return const TextStyle(fontSize: 10);
+            return const TextStyle(fontSize: 9);
           }
           return const TextStyle(fontSize: 12);
         }),

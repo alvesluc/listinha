@@ -6,6 +6,12 @@ class HomeDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NavigationDrawer(
+      onDestinationSelected: (index) {
+        if (index == 1) {
+          Navigator.pop(context);
+          Navigator.pushNamed(context, '/settings');
+        }
+      },
       children: [
         SafeArea(
           bottom: false,

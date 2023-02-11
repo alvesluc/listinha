@@ -47,7 +47,7 @@ class _HomePage extends State<HomePage> {
                     label: Text('Desativadas'),
                   ),
                 ],
-                selected: const {1},
+                selected: const {3},
                 onSelectionChanged: (value) {},
               ),
             ),
@@ -55,7 +55,9 @@ class _HomePage extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, './edit');
+        },
         icon: const Icon(Icons.edit),
         label: const Text('Nova lista'),
       ),
