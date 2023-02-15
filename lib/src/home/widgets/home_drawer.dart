@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intl/intl.dart';
+import 'package:listinha/src/shared/stores/app_store.dart';
 
 class HomeDrawer extends StatelessWidget {
   const HomeDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final appStore = context.watch<AppStore>((store) => store.syncDate);
+    final syncDate = appStore.syncDate.value;
+
+    var syncDateText = 'Nunca';
+
+    if (syncDate != null) {
+      final format = DateFormat('dd/mm/yyyy às hh:mm');
+      syncDateText = format.format(syncDate);
+    }
+
     return NavigationDrawer(
       onDestinationSelected: (index) {
         if (index == 1) {
@@ -31,7 +44,7 @@ class HomeDrawer extends StatelessWidget {
               const Text('Sincronizar'),
               const SizedBox(width: 8),
               Text(
-                '08/02/2023 às 23:36',
+                syncDateText,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ],
