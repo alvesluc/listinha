@@ -19,13 +19,13 @@ class TaskCard extends StatelessWidget {
 
   double getProgress(List<Task> tasks) {
     if (tasks.isEmpty) return 0;
-    final completed = tasks.where((e) => e.isCompleted = true).length;
+    final completed = tasks.where((task) => task.isCompleted == true).length;
     return completed / tasks.length;
   }
 
   String getProgressText(List<Task> tasks) {
     if (tasks.isEmpty) return '0/0';
-    final completed = tasks.where((e) => e.isCompleted = true).length;
+    final completed = tasks.where((task) => task.isCompleted == true).length;
     return '$completed/${tasks.length}';
   }
 
