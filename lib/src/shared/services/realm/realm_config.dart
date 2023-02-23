@@ -1,14 +1,14 @@
-import 'package:listinha/src/shared/services/realm/models/configuration_model.dart';
+import 'package:listinha/src/shared/services/realm/models/settings_model.dart';
 import 'package:listinha/src/shared/services/realm/models/tasks_model.dart';
 import 'package:realm/realm.dart';
 
 LocalConfiguration config = Configuration.local(
   [
-    ConfigurationModel.schema,
+    SettingsModel.schema,
     Task.schema,
     Taskboard.schema,
   ],
   initialDataCallback: (realm) {
-    realm.add(ConfigurationModel('system'));
+    realm.add(SettingsModel('system'));
   },
 );

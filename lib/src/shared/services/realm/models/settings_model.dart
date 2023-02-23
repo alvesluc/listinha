@@ -1,9 +1,9 @@
 import 'package:realm/realm.dart';
 
-part 'configuration_model.g.dart';
+part 'settings_model.g.dart';
 
 @RealmModel()
-class _ConfigurationModel {
+class _SettingsModel {
   late String themeModeName;
   late DateTime? syncDate;
 }

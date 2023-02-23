@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'configuration_model.dart';
+part of 'settings_model.dart';
 
 // **************************************************************************
 // RealmObjectGenerator
 // **************************************************************************
 
-class ConfigurationModel extends _ConfigurationModel
+class SettingsModel extends _SettingsModel
     with RealmEntity, RealmObjectBase, RealmObject {
-  ConfigurationModel(
+  SettingsModel(
     String themeModeName, {
     DateTime? syncDate,
   }) {
@@ -16,7 +16,7 @@ class ConfigurationModel extends _ConfigurationModel
     RealmObjectBase.set(this, 'syncDate', syncDate);
   }
 
-  ConfigurationModel._();
+  SettingsModel._();
 
   @override
   String get themeModeName =>
@@ -32,19 +32,18 @@ class ConfigurationModel extends _ConfigurationModel
   set syncDate(DateTime? value) => RealmObjectBase.set(this, 'syncDate', value);
 
   @override
-  Stream<RealmObjectChanges<ConfigurationModel>> get changes =>
-      RealmObjectBase.getChanges<ConfigurationModel>(this);
+  Stream<RealmObjectChanges<SettingsModel>> get changes =>
+      RealmObjectBase.getChanges<SettingsModel>(this);
 
   @override
-  ConfigurationModel freeze() =>
-      RealmObjectBase.freezeObject<ConfigurationModel>(this);
+  SettingsModel freeze() => RealmObjectBase.freezeObject<SettingsModel>(this);
 
   static SchemaObject get schema => _schema ??= _initSchema();
   static SchemaObject? _schema;
   static SchemaObject _initSchema() {
-    RealmObjectBase.registerFactory(ConfigurationModel._);
+    RealmObjectBase.registerFactory(SettingsModel._);
     return const SchemaObject(
-        ObjectType.realmObject, ConfigurationModel, 'ConfigurationModel', [
+        ObjectType.realmObject, SettingsModel, 'SettingsModel', [
       SchemaProperty('themeModeName', RealmPropertyType.string),
       SchemaProperty('syncDate', RealmPropertyType.timestamp, optional: true),
     ]);
