@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:listinha/src/settings/services/settings_service_impl.dart';
 import 'package:listinha/src/shared/stores/app_store.dart';
+import 'package:rx_notifier/rx_notifier.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -10,14 +12,21 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _ConfigurationPage extends State<SettingsPage> {
+  final appStore = Modular.get<AppStore>();
+  final settingsService = Modular.get<SettingsServiceImpl>();
+
+  void _changeThemeMode(ThemeMode? mode) {
+    if (mode != null) {
+      appStore.themeMode = mode;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final appStore = context.watch<AppStore>(
-      (store) => store.themeMode,
-    );
-
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
+
+    context.select(() => appStore.themeMode);
 
     return Scaffold(
       appBar: AppBar(
@@ -41,21 +50,21 @@ class _ConfigurationPage extends State<SettingsPage> {
           const SizedBox(height: 8),
           RadioListTile<ThemeMode>(
             value: ThemeMode.system,
-            groupValue: appStore.themeMode.value,
+            groupValue: appStore.themeMode,
             title: const Text('Sistema'),
-            onChanged: appStore.changeThemeMode,
+            onChanged: _changeThemeMode,
           ),
           RadioListTile<ThemeMode>(
             value: ThemeMode.light,
-            groupValue: appStore.themeMode.value,
+            groupValue: appStore.themeMode,
             title: const Text('Claro'),
-            onChanged: appStore.changeThemeMode,
+            onChanged: _changeThemeMode,
           ),
           RadioListTile<ThemeMode>(
             value: ThemeMode.dark,
-            groupValue: appStore.themeMode.value,
+            groupValue: appStore.themeMode,
             title: const Text('Escuro'),
-            onChanged: appStore.changeThemeMode,
+            onChanged: _changeThemeMode,
           ),
           const SizedBox(height: 8),
           Text(
@@ -64,7 +73,7 @@ class _ConfigurationPage extends State<SettingsPage> {
           ),
           const SizedBox(height: 8),
           OutlinedButton(
-            onPressed: appStore.clearConfigurations,
+            onPressed: settingsService.deleteAll,
             child: const Text(
               'Apagar cache e reiniciar app',
             ),
